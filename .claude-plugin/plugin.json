@@ -1,6 +1,6 @@
 {
   "name": "muchita-shopping",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "displayName": "Muchita Shopping",
   "description": "Find the best price for an exact product: Claude runs a Muchita Shopping check in your Chrome and gets the verified result back.",
   "author": {

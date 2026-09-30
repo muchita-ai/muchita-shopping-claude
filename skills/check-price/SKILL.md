@@ -17,7 +17,7 @@ If the shopper is on a phone or has no desktop Chrome available, do not start or
 
 ## 2. Start the requested check
 
-A direct request to find the best price, compare a price or run a product check authorizes the hunt. Announce the exact product and variant and say that Muchita visibly checks stores in the shopper's desktop Chrome for about 1-3 minutes; they can keep working or stop it anytime. Then call `check_price`. Do not ask them to approve the same check again. Chrome separately asks them to approve a first installation and its permissions.
+A direct request to find the best price, compare a price or run a product check authorizes the hunt. Announce the exact product and variant and say that Muchita visibly checks stores in the shopper's desktop Chrome for about 1-3 minutes; they can keep working or stop it anytime. Then call `check_price`. If its schema is not loaded yet, find it by searching your tools for `check_price`; do not type its full prefixed name from memory. Do not ask them to approve the same check again. Chrome separately asks them to approve a first installation and its permissions.
 
 If the shopper requested only advice or an explanation, do not start a new hunt unless they ask for one. Clarify only a genuinely missing product variant or shopping market needed to run the requested check. The tool opens Chrome on this computer. If the shopper declines installation or stops the check, respect that choice.
 
