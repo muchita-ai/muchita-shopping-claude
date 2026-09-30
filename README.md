@@ -6,7 +6,7 @@ Ask Claude for the best price on an exact product. The plugin runs a Muchita Sho
 
 Claude Code, Node.js 18 or later and desktop Chrome on the same computer. The check uses the free [Muchita Shopping extension](https://chromewebstore.google.com/detail/muchita-shopping/kdfhenbdndhjcenmjnbnllenhacpaaok), which the plugin offers on first use. No Muchita account or API key is needed.
 
-This plugin is for Claude users, who must be 18 or older under Anthropic's terms.
+You must meet Anthropic's applicable age and account requirements for the Claude service you use. Consumer accounts require age 18 or the higher local minimum.
 
 ## Install
 
