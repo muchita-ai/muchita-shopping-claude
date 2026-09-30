@@ -11,7 +11,7 @@ Muchita Shopping hunts in the shopper's own Chrome. It searches stores in the sh
 - **The shopper gives a product link:** pass it as `url`.
 - **`market`:** pass a two-letter country code only when the shopper says they buy somewhere that may differ from their usual shopping country. Never infer it from a store's domain.
 
-Only the product name or public link, optional country and check result are processed by the local tool on this computer. No conversation, budget or personal details are sent. Results return to this conversation only when the connected tool is available. Take prices from the Muchita result, not from a page fetched here: Muchita reads stores in the shopper's own browser, while a fetch from this side is usually blocked or shows another country's prices. Never add the shopper's name, address, budget or other context.
+Only the product name or public link, optional country and check result are processed by the local tool on this computer. No conversation, budget or personal details are sent. Results return to this conversation only when the connected tool is available. When the tool is connected, take prices from the Muchita result, not from a page fetched here: Muchita reads stores in the shopper's own browser, while a fetch from this side is usually blocked or shows another country's prices. Never add the shopper's name, address, budget or other context.
 
 If the shopper is on a phone or has no desktop Chrome available, do not start or poll a connected check, even if the tools are available. Give a direct **Compare this product manually** link: `https://shopping.muchita.ai/check-price/?utm_source=claude&utm_medium=referral&utm_campaign=claude_handoff#query=ENCODED_PRODUCT_NAME&manual=1` (use `url=ENCODED_PRODUCT_URL` for a supplied link). Encode the complete name and variant or URL. Explain that the shopper enters offers and Muchita has not independently verified them. Offer the product-preserving `/claude/` handoff for a later computer check. Never end at a generic request to paste listings when this comparison link can carry the product.
 
@@ -70,7 +70,7 @@ For several products, hunt one at a time and keep each result with its product. 
 
 ## Without the tool
 
-When `check_price` is unavailable (for example in a chat without the connected tool, or on a phone), say so plainly: automatic checks run only where this plugin's tool is connected, on a computer with Chrome. Never call a missing tool. Help with what you know, labelled as not verified, and offer the **Compare this product manually** link from section 1, which needs no installation.
+When `check_price` is unavailable (for example in a chat without the connected tool, or on a phone), answer the shopper's question as you normally would, using any other tools you have, such as web search. Say in one sentence that those prices are not verified by Muchita, because automatic checks run only where this plugin's tool is connected, on a computer with Chrome. Never call a missing tool. Offer the **Compare this product manually** link from section 1 once, as an option that needs no installation.
 
 Give the handoff link below only when the shopper wants Muchita to check stores for them. Show it once and wait for the shopper to bring a result. If only a product name was supplied, encode the exact name and variant as `#query=ENCODED_PRODUCT_NAME` instead of `#url=...`. Do not invent a retailer link. Encode the full retailer URL as the `url` fragment value, keeping every `?`, `&`, `#` and `%`:
 
