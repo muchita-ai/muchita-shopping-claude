@@ -249,11 +249,11 @@ async function checkPrice({ url, product: name, market, tips, wait_seconds }, no
   if (market != null && !/^[a-z]{2}$/i.test(market)) throw new Error('market must be a two-letter ISO country code, such as DE or US.');
   for (const [key, job] of jobs) if (Date.now() - job.createdAt > TTL_MS) jobs.delete(key);
   const port = await listen();
-  const token = randomBytes(24).toString('base64url');
-  const params = new URLSearchParams({ ...(product ? { url: product } : { query }), bridge: `${port}.${token}`, ...(EXTENSION_ID ? { ext: EXTENSION_ID } : {}) });
+  const code = randomBytes(24).toString('base64url');
+  const params = new URLSearchParams({ ...(product ? { url: product } : { query }), bridge: `${port}.${code}`, ...(EXTENSION_ID ? { ext: EXTENSION_ID } : {}) });
   const job = { id: randomBytes(6).toString('hex'), url: product, query, market: market?.toLowerCase(), createdAt: Date.now(), waiters: new Set(), link: '', notify, tips: (Array.isArray(tips) ? tips : []).filter((tip) => typeof tip === 'string' && tip.trim()).slice(0, 3).map((tip) => tip.trim().slice(0, 160)) };
   job.link = `${HANDOFF}?utm_source=${CLIENT}&utm_medium=referral&utm_campaign=${CLIENT}_handoff#${params}`;
-  jobs.set(token, job);
+  jobs.set(code, job);
   if (!(await runtime.open(job.link))) return { job_id: job.id, status: 'browser_not_opened', next: 'Could not open Chrome from this machine. Give the shopper the handoff link to open in Chrome on this computer, then call get_price_check with this job_id.', handoff: job.link, install: INSTALL };
   return follow(job, wait_seconds, undefined, true);
 }
@@ -275,16 +275,16 @@ const HANDLERS = { check_price: checkPrice, get_price_check: priceCheck };
 
 async function handle(message) {
   const { id, method, params } = message;
-  if (method === 'initialize') return { protocolVersion: params?.protocolVersion ?? '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'muchita-shopping', version: '0.5.10' } };
+  if (method === 'initialize') return { protocolVersion: params?.protocolVersion ?? '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'muchita-shopping', version: '0.5.11' } };
   if (method === 'ping') return {};
   if (method === 'tools/list') return { tools: TOOLS };
   if (method === 'tools/call') {
     const handler = HANDLERS[params?.name];
     if (!handler) throw Object.assign(new Error(`Unknown tool ${params?.name}`), { code: -32602 });
     try {
-      const token = params?._meta?.progressToken;
+      const progress = params?._meta?.progressToken;
       let step = 0;
-      const notify = token == null ? undefined : (message) => runtime.notify({ method: 'notifications/progress', params: { progressToken: token, progress: ++step, message } });
+      const notify = progress == null ? undefined : (message) => runtime.notify({ method: 'notifications/progress', params: { progressToken: progress, progress: ++step, message } });
       return { content: [{ type: 'text', text: JSON.stringify(await handler(params.arguments ?? {}, notify)) }] };
     } catch (error) {
       return { content: [{ type: 'text', text: error.message }], isError: true };

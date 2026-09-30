@@ -51,7 +51,7 @@ Muchita is free and currently has no ads, sponsored placements or affiliate link
 
 The tool is a small local MCP server with no dependencies. It installs no packages and makes no network requests of its own; the Chrome extension does the browsing. During a check it:
 
-- listens only on 127.0.0.1, with a one-time token per check, so the extension can return the result
+- listens only on 127.0.0.1, with a one-time code per check, so only the extension can return the result
 - opens Chrome at the Muchita check page for your product
 - writes a debug log only if you set MUCHITA_TRACE to a file path
 

@@ -1,6 +1,6 @@
 {
   "name": "muchita-shopping",
-  "version": "0.5.10",
+  "version": "0.5.11",
   "displayName": "Muchita Shopping",
   "description": "Find the best price for an exact product: Claude runs a Muchita Shopping check in your Chrome and gets the verified result back.",
   "author": {
@@ -8,6 +8,11 @@
     "url": "https://shopping.muchita.ai"
   },
   "homepage": "https://shopping.muchita.ai/claude/",
+  "repository": "https://github.com/muchita-ai/muchita-shopping-claude",
+  "documentationUrl": "https://github.com/muchita-ai/muchita-shopping-claude#readme",
+  "supportUrl": "https://shopping.muchita.ai/claude/#support",
+  "privacyPolicyUrl": "https://shopping.muchita.ai/shopping/privacy",
+  "termsOfServiceUrl": "https://shopping.muchita.ai/shopping/terms",
   "license": "MIT",
   "keywords": [
     "shopping",
