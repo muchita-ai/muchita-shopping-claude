@@ -1,0 +1,14 @@
+{
+  "name": "muchita",
+  "description": "Shopping tools from Muchita.",
+  "owner": {
+    "name": "Muchita"
+  },
+  "plugins": [
+    {
+      "name": "muchita-shopping",
+      "source": "./",
+      "description": "Find the best price for an exact product: Claude runs a Muchita Shopping check in your Chrome and gets the verified result back."
+    }
+  ]
+}
