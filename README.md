@@ -57,7 +57,11 @@ The tool is a small local MCP server with no dependencies. It installs no packag
 
 ## Privacy
 
-The product name or link is passed to the Muchita page in a link fragment, which is not sent in the HTTP request. Your conversation is not sent to Muchita. Retailer browsing runs in your Chrome, and the shopping result returns to Claude. The website and extension follow their own consent rules.
+Your conversation is not sent to Muchita. The shopping result returns to Claude. A check contacts these services, all from your own Chrome:
+
+- shopping.muchita.ai serves the check page. The product name or link is passed to it in a link fragment, which is not sent in the HTTP request.
+- Search engines and store websites are opened by the Muchita extension to find and read offers, as if you visited them yourself.
+- Analytics run only if you accepted them on the Muchita site or in the extension, and never include your conversation or the product link.
 
 [Privacy](https://shopping.muchita.ai/shopping/privacy) - [Terms](https://shopping.muchita.ai/shopping/terms)
 
