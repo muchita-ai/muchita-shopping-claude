@@ -70,7 +70,7 @@ For several products, hunt one at a time and keep each result with its product. 
 
 ## Without the tool
 
-When `check_price` is unavailable (for example in a chat without the connected tool, or on a phone), answer the shopper's question as you normally would, using any other tools you have, such as web search. Say in one sentence that those prices are not verified by Muchita, because automatic checks run only where this plugin's tool is connected, on a computer with Chrome. Never call a missing tool. Offer the **Compare this product manually** link from section 1 once, as an option that needs no installation.
+When `check_price` is unavailable (for example in a chat without the connected tool, or on a phone), lead with the answer to the shopper's question, found as you normally would with any other tools you have, such as web search. After it, say in one sentence that those prices are not verified by Muchita, because automatic checks run only where this plugin's tool is connected, on a computer with Chrome. Never call a missing tool. Offer the **Compare this product manually** link from section 1 once, as an option that needs no installation.
 
 Give the handoff link below only when the shopper wants Muchita to check stores for them. Show it once and wait for the shopper to bring a result. If only a product name was supplied, encode the exact name and variant as `#query=ENCODED_PRODUCT_NAME` instead of `#url=...`. Do not invent a retailer link. Encode the full retailer URL as the `url` fragment value, keeping every `?`, `&`, `#` and `%`:
 

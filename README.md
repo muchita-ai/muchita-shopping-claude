@@ -27,7 +27,7 @@ Ask Claude in your own words, or run `/muchita-shopping:check-price <product nam
 - "Is there a cheaper offer for this exact product?" with a retailer product link.
 - "Explain this Muchita result, including shipping and anything not verified."
 
-Automatic checks need Claude Code on a computer with Chrome. In claude.ai chat and on phones the local tool does not run; there Claude can explain a result or give you a link to compare offers you enter yourself.
+Automatic checks need Claude Code on a computer with Chrome. In claude.ai chat, in Cowork and on phones the local tool does not run; there Claude answers with its usual tools, says those prices are not verified by Muchita, and can give you a link to compare offers you enter yourself.
 
 ## One-time Chrome setup
 
