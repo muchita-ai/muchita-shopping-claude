@@ -53,6 +53,7 @@ The tool is a small local MCP server with no dependencies. It installs no packag
 
 - listens only on 127.0.0.1, with a one-time code per check, so only the extension can return the result
 - opens Chrome at the Muchita check page for your product
+- returns each result to Claude with a short `next` note on what to tell you for that status, written by this plugin and readable in `server/muchita.mjs`
 - writes a debug log only if you set MUCHITA_TRACE to a file path
 
 ## Privacy
@@ -68,5 +69,7 @@ Your conversation is not sent to Muchita. The shopping result returns to Claude.
 ## Support
 
 Email support@muchita.ai with your extension version and what happened. Do not send passwords, payment details or a private check link.
+
+[Support](https://shopping.muchita.ai/claude/#support) - [Documentation](https://github.com/muchita-ai/muchita-shopping-claude#readme)
 
 MIT licensed. Muchita is independent of Anthropic.

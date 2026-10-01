@@ -202,7 +202,7 @@ async function follow(job, seconds, connectMs = connectWindow(job), started = fa
 }
 
 const NEXT = {
-  hunting: 'The hunt is running in Chrome and usually takes 1-3 minutes. Before calling any tool, write the shopper a short message now: that the hunt is running (1-3 minutes; a human check may need their attention) plus two or three smart-shopping tips that fit this product. Then call get_price_check with this job_id.',
+  hunting: 'The hunt is running in Chrome and usually takes 1-3 minutes. Tell the shopper in a short message that the hunt is running (1-3 minutes; a human check may need their attention) plus two or three smart-shopping tips that fit this product. Then call get_price_check with this job_id.',
   extension_update_required: 'This Chrome has an older Muchita that can only hunt from a product link. Chrome updates extensions on its own within hours. For now, find the product page at a store in the shopper\'s country and call check_price with url.',
   product_not_read: 'Muchita could not read a product on that page. A fetch from here is usually blocked too. In one sentence, ask for the product name and variant, or the same product\'s link from another store, then hunt with that. Do not add "Reply hunt": a bare "hunt" gives you nothing to search for.',
   store_blocked: 'The store in the shopper\'s link (source.store) blocked the check from this connection, so Muchita could not read that page. Say that in one sentence. A fetch from here is usually blocked too. If the shopper already told you the product name, offer to hunt for it by name, which checks other stores, ending with "Reply **hunt** to try that." Otherwise ask, in one sentence, for the product name and variant or the same product\'s link from another store, without "Reply hunt".',
@@ -275,7 +275,7 @@ const HANDLERS = { check_price: checkPrice, get_price_check: priceCheck };
 
 async function handle(message) {
   const { id, method, params } = message;
-  if (method === 'initialize') return { protocolVersion: params?.protocolVersion ?? '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'muchita-shopping', version: '0.5.11' } };
+  if (method === 'initialize') return { protocolVersion: params?.protocolVersion ?? '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'muchita-shopping', version: '0.5.12' } };
   if (method === 'ping') return {};
   if (method === 'tools/list') return { tools: TOOLS };
   if (method === 'tools/call') {
