@@ -15,8 +15,6 @@ Muchita checks only ordinary physical consumer products. It is not for explicit 
 
 Only the product name or public link, optional country and check result are processed by the local tool on this computer. No conversation, budget or personal details are sent. Results return to this conversation only when the connected tool is available. When the tool is connected, take prices from the Muchita result, not from a page fetched here: Muchita reads stores in the shopper's own browser, while a fetch from this side is usually blocked or shows another country's prices. Never add the shopper's name, address, budget or other context.
 
-If the shopper is on a phone or has no desktop Chrome available, do not start or poll a check, even if the tools are available. Say that Muchita's verified check runs from Claude Code on a computer with Chrome, and help with what you can otherwise.
-
 ## 2. Start the requested check
 
 A direct request to find the best price, compare a price or run a product check authorizes the hunt. Announce the exact product and variant and say that Muchita visibly checks stores in the shopper's desktop Chrome for about 1-3 minutes; they can keep working or stop it anytime. Then call `check_price`. If its schema is not loaded yet, find it by searching your tools for `check_price`; do not type its full prefixed name from memory. Do not ask them to approve the same check again. Chrome separately asks them to approve a first installation and its permissions.
@@ -74,7 +72,7 @@ For several products, hunt one at a time and keep each result with its product. 
 
 ## Without the tool
 
-When `check_price` is unavailable (for example in claude.ai chat, in Cowork without the connected tool, or on a phone), lead with the answer to the shopper's question, found as you normally would with any other tools you have, such as web search. After it, say in one sentence that these prices are not verified by Muchita, because Muchita's verified check runs from Claude Code on a computer with Chrome. Never call a missing tool, and do not offer Muchita links or pages instead.
+When `check_price` is not available in this conversation, lead with the answer to the shopper's question, found as you normally would with any other tools you have, such as web search. After it, say in one sentence that these prices are not verified by Muchita, because Muchita's verified check runs from Claude Code on a computer with Chrome. Never call a missing tool, and do not offer Muchita links or pages instead.
 
 If the shopper pastes a Muchita result (`schema: "muchita-shopping-result"`), explain it in the same voice as above: `verified_offers` means verified offers from a name-based search with no starting-price saving claim, `verified_item_price_saving` a verified cheaper offer, `no_verified_saving` that none was found, and `inconclusive` an incomplete check.
 

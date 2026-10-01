@@ -275,7 +275,7 @@ const HANDLERS = { check_price: checkPrice, get_price_check: priceCheck };
 
 async function handle(message) {
   const { id, method, params } = message;
-  if (method === 'initialize') return { protocolVersion: params?.protocolVersion ?? '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'muchita-shopping', version: '0.5.14' } };
+  if (method === 'initialize') return { protocolVersion: params?.protocolVersion ?? '2025-06-18', capabilities: { tools: {} }, serverInfo: { name: 'muchita-shopping', version: '0.5.15' } };
   if (method === 'ping') return {};
   if (method === 'tools/list') return { tools: TOOLS };
   if (method === 'tools/call') {
