@@ -1,72 +1,54 @@
-# Muchita Shopping for Claude Code
+# Muchita Shopping for Claude
 
-![Claude Code asks Muchita for the best price of Sony WH-1000XM5 headphones; Muchita checks stores in Chrome and returns verified offers](assets/demo.gif)
-
-*Illustrative example, sped up.*
-
-Ask Claude for the best price on an exact product. The plugin runs a Muchita Shopping check in your own Chrome: it searches stores in your shopping country, verifies the product, variant, availability and item price, and returns the verified offers to your conversation.
+Real store prices, checked in your own Chrome. Ask Claude for offers for an exact product name and variant, or a public retailer product link. Muchita checks stores in your shopping country and returns verified item prices with shipping shown separately.
 
 ## Requirements
 
-Claude Code, Node.js 18 or later and desktop Chrome on the same computer. The check uses the free [Muchita Shopping extension](https://chromewebstore.google.com/detail/muchita-shopping/kdfhenbdndhjcenmjnbnllenhacpaaok), which the plugin offers on first use. No Muchita account or API key is needed.
+Fresh checks require desktop Chrome and the free [Muchita Shopping extension](https://chromewebstore.google.com/detail/muchita-shopping/kdfhenbdndhjcenmjnbnllenhacpaaok). The hosted edition requires Muchita 0.3.22 or later and needs no local server, Node.js installation or terminal setup. No Muchita account or API key is needed.
 
 You must meet Anthropic's applicable age and account requirements for the Claude service you use. Consumer accounts require age 18 or the higher local minimum.
 
-## Install
+## Connect
 
-From a clone of this repository, run in your terminal:
+Enable Muchita Shopping in a Claude client that supports remote MCP plugins. For a custom connector test, use this server URL:
+
+`https://shopping-plugin.muchita.ai/mcp/claude`
+
+No authentication is required. If your Claude client supports interactive MCP Apps, offers also appear in a live card. In clients without cards, Claude retrieves and explains the result with the connected tools. This repository does not claim directory publication or approval.
+
+For Claude Code, install the same hosted plugin from a clone of this repository:
 
 ```sh
 claude plugin marketplace add ./
 claude plugin install muchita-shopping@muchita --scope user
 ```
 
-Restart Claude Code, or run `/reload-plugins` in an open session.
+Restart Claude Code, or run `/reload-plugins` in an open session. Ask Claude in your own words, or run `/muchita-shopping:check-price <product name or link>`.
 
-## Use
+## Your first check
 
-Ask Claude in your own words, or run `/muchita-shopping:check-price <product name or link>`. For example:
+1. Ask for an exact product, such as "Find offers for Sony WH-1000XM5 in black."
+2. Open the private check link Claude shows in desktop Chrome. The hosted connection cannot launch Chrome itself.
+3. If Muchita is missing, click Install Muchita, then Add to Chrome in the Web Store and confirm Chrome's permissions. Keep the original check tab open; the same check starts automatically after installation.
+4. Chrome visibly checks stores, usually for 1-3 minutes. You can keep working or stop the check in Chrome. A human check may need your attention.
+5. Verified offers update in the live card when supported, even after Claude stops replying. Claude can retrieve the same completed check without starting another hunt. Open an offer to buy directly from the retailer.
 
-- "Find the best price for Sony WH-1000XM5 in black."
-- "Is there a cheaper offer for this exact product?" with a retailer product link.
-- "Explain this Muchita result, including shipping and anything not verified."
+Offers are ranked by verified item price. Shipping is free, a stated extra charge, or not confirmed; unknown shipping is never treated as free and shipping does not change the item-price order. Prices and availability can change. Results cover the offers Muchita could verify, not every offer on the internet. Muchita never buys for you or handles payments. The service is free and currently has no ads, sponsored placements or affiliate links.
 
-Automatic checks need Claude Code on a computer with Chrome. In claude.ai chat, in Cowork and on phones the local tool does not run; there Claude answers with its usual tools, says those prices are not verified by Muchita, and can give you a link to compare offers you enter yourself.
+## Phones and unavailable tools
 
-## One-time Chrome setup
-
-The plugin opens your product check in Chrome. If Muchita is missing, that page says Claude needs it: click Install Muchita from the Chrome Web Store, then Add to Chrome and confirm Chrome's permissions. Keep the original tab open; the same check starts by itself.
-
-## What to expect
-
-Chrome opens a Muchita page for your product. The first time, that page asks you to install the extension; after that the check starts at once. It visibly opens store pages in Chrome for about 1-3 minutes and can be stopped there. A store or search human check may need one click from you. Claude then shows the verified offers, ranked by item price, with shipping shown separately.
-
-Muchita is free and currently has no ads, sponsored placements or affiliate links; offer links are the stores' own listing links. Muchita never buys for you and does not promise the lowest price everywhere.
+A phone cannot run a fresh check. Keep the product for a later desktop Chrome check, or ask Claude to explain an existing Muchita result. If the connected tools are unavailable, Claude can answer with its usual tools and makes clear those prices are not verified by Muchita. Manually entered prices are not a substitute for a Muchita hunt.
 
 ## Troubleshooting
 
-- Claude does not offer a check: run `claude plugin list`, confirm muchita-shopping is enabled, then restart Claude Code. Check `node --version` shows 18 or later.
-- Chrome opened but the check did not start: finish the installation on that page and keep the original tab open. A request that waits more than ten minutes ends; ask Claude again.
-- Chrome opened in a profile without Muchita: add Muchita there, or set `MUCHITA_CHROME_PROFILE` to the profile folder name (for example `Profile 1`) before starting Claude Code.
-- Chrome did not open: Claude shows a link; open it in Chrome on this computer.
-- The check pauses for a human check: complete it in the Muchita tab and the check continues by itself.
-
-## What runs on your computer
-
-The tool is a small local MCP server with no dependencies. It installs no packages and makes no network requests of its own; the Chrome extension does the browsing. During a check it:
-
-- listens only on 127.0.0.1, with a one-time code per check, so only the extension can return the result
-- opens Chrome at the Muchita check page for your product
-- returns each result to Claude with a short `next` note on what to tell you for that status, written by this plugin and readable in `server/muchita.mjs`
-- writes a debug log only if you set MUCHITA_TRACE to a file path
+- No Muchita tools: enable the plugin or connector in this conversation. In Claude Code, check `claude plugin list` and restart or reload plugins.
+- The check waits after installation: return to the original check tab and use the Chrome profile where Muchita is installed. An unopened request expires after ten minutes; ask for a fresh check if it expired.
+- Chrome needs a human check: complete it in the Muchita tab; the same check continues.
+- The result did not appear: ask Claude to retrieve the existing check. Keep its private link private; it grants access to that check.
 
 ## Privacy
 
-Your conversation is not sent to Muchita. The shopping result returns to Claude. A check contacts these services, all from your own Chrome:
-
-- shopping.muchita.ai serves the check page. The product name or link is passed to it in a link fragment, which is not sent in the HTTP request.
-- Search engines and store websites are opened by the Muchita extension to find and read offers, as if you visited them yourself.
-- Analytics run only if you accepted them on the Muchita site or in the extension, and never include your conversation or the product link.
+The hosted MCP connection temporarily processes only your chosen product name or public link, optional shopping country and check result. Stored check data is deleted within one hour. No conversation, budget, name, address or payment details are requested or sent to Muchita. The extension reads search and retailer pages in your own Chrome. The result returns to Claude through the connected tools. Website and extension analytics follow their existing consent rules.
 
 [Privacy](https://shopping.muchita.ai/shopping/privacy) - [Terms](https://shopping.muchita.ai/shopping/terms)
 
@@ -74,6 +56,6 @@ Your conversation is not sent to Muchita. The shopping result returns to Claude.
 
 Email support@muchita.ai with your extension version and what happened. Do not send passwords, payment details or a private check link.
 
-[Support](https://shopping.muchita.ai/claude/#support) - [Documentation](https://github.com/muchita-ai/muchita-shopping-claude#readme)
+[Setup and support](https://shopping.muchita.ai/claude/) - [Documentation](https://github.com/muchita-ai/muchita-shopping-claude#readme)
 
 MIT licensed. Muchita is independent of Anthropic.

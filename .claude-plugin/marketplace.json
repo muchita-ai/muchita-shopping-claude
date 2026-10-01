@@ -8,7 +8,7 @@
     {
       "name": "muchita-shopping",
       "source": "./",
-      "description": "Find the best price for an exact product: Claude runs a Muchita Shopping check in your Chrome and gets the verified result back."
+      "description": "Compare real store prices checked in your own desktop Chrome, with live verified offers in Claude where supported."
     }
   ]
 }
