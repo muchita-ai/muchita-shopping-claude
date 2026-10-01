@@ -1,5 +1,9 @@
 # Muchita Shopping for Claude Code
 
+![Claude Code asks Muchita for the best price of Sony WH-1000XM5 headphones; Muchita checks stores in Chrome and returns verified offers](assets/demo.gif)
+
+*Illustrative example, sped up.*
+
 Ask Claude for the best price on an exact product. The plugin runs a Muchita Shopping check in your own Chrome: it searches stores in your shopping country, verifies the product, variant, availability and item price, and returns the verified offers to your conversation.
 
 ## Requirements
