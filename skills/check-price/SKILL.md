@@ -15,7 +15,7 @@ Muchita checks only ordinary physical consumer products. It is not for explicit 
 
 Only the product name or public link, optional country and check result are processed by the local tool on this computer. No conversation, budget or personal details are sent. Results return to this conversation only when the connected tool is available. When the tool is connected, take prices from the Muchita result, not from a page fetched here: Muchita reads stores in the shopper's own browser, while a fetch from this side is usually blocked or shows another country's prices. Never add the shopper's name, address, budget or other context.
 
-If the shopper is on a phone or has no desktop Chrome available, do not start or poll a connected check, even if the tools are available. Give a direct **Compare this product manually** link: `https://shopping.muchita.ai/check-price/?utm_source=claude&utm_medium=referral&utm_campaign=claude_handoff#query=ENCODED_PRODUCT_NAME&manual=1` (use `url=ENCODED_PRODUCT_URL` for a supplied link). Encode the complete name and variant or URL. Explain that the shopper enters offers and Muchita has not independently verified them. Offer the product-preserving `/claude/` handoff for a later computer check. Never end at a generic request to paste listings when this comparison link can carry the product.
+If the shopper is on a phone or has no desktop Chrome available, do not start or poll a check, even if the tools are available. Say that Muchita's verified check runs from Claude Code on a computer with Chrome, and help with what you can otherwise.
 
 ## 2. Start the requested check
 
@@ -74,13 +74,9 @@ For several products, hunt one at a time and keep each result with its product. 
 
 ## Without the tool
 
-When `check_price` is unavailable (for example in a chat without the connected tool, or on a phone), lead with the answer to the shopper's question, found as you normally would with any other tools you have, such as web search. After it, say in one sentence that those prices are not verified by Muchita, because automatic checks run only where this plugin's tool is connected, on a computer with Chrome. Never call a missing tool. Offer the **Compare this product manually** link from section 1 once, as an option that needs no installation.
+When `check_price` is unavailable (for example in claude.ai chat, in Cowork without the connected tool, or on a phone), lead with the answer to the shopper's question, found as you normally would with any other tools you have, such as web search. After it, say in one sentence that these prices are not verified by Muchita, because Muchita's verified check runs from Claude Code on a computer with Chrome. Never call a missing tool, and do not offer Muchita links or pages instead.
 
-Give the handoff link below only when the shopper wants Muchita to check stores for them. Show it once and wait for the shopper to bring a result. If only a product name was supplied, encode the exact name and variant as `#query=ENCODED_PRODUCT_NAME` instead of `#url=...`. Do not invent a retailer link. Encode the full retailer URL as the `url` fragment value, keeping every `?`, `&`, `#` and `%`:
-
-`https://shopping.muchita.ai/claude/?utm_source=claude&utm_medium=referral&utm_campaign=claude_handoff#url=ENCODED_PRODUCT_URL`
-
-Label it **Check this product with Muchita**. Explain: open it in Chrome on a computer and add the free extension if asked; choose Open, and Muchita checks prices; then use **Copy → AI** (**Copy → Claude** on older versions) in Muchita's results and paste the summary here. A pasted export has `schema: "muchita-shopping-result"`. Its `verified_offers` means verified offers from a name-based search with no starting-price saving claim. `verified_item_price_saving` means a verified cheaper offer, `no_verified_saving` means none was found, and `inconclusive` means the check was incomplete. Present it with the same voice as above.
+If the shopper pastes a Muchita result (`schema: "muchita-shopping-result"`), explain it in the same voice as above: `verified_offers` means verified offers from a name-based search with no starting-price saving claim, `verified_item_price_saving` a verified cheaper offer, `no_verified_saving` that none was found, and `inconclusive` an incomplete check.
 
 Muchita and this plugin are independent of Anthropic.
 
