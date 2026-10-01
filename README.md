@@ -6,6 +6,8 @@ Real store prices, checked in your own Chrome. Ask Claude for offers for an exac
 
 Fresh checks require desktop Chrome and the free [Muchita Shopping extension](https://chromewebstore.google.com/detail/muchita-shopping/kdfhenbdndhjcenmjnbnllenhacpaaok). The hosted edition requires Muchita 0.3.22 or later and needs no local server, Node.js installation or terminal setup. No Muchita account or API key is needed.
 
+**Availability:** Chrome Web Store publication of Muchita 0.3.22 is in progress. Earlier Store versions cannot run hosted Claude checks. The complete flow has been verified in Claude web using the 0.3.22 release candidate.
+
 You must meet Anthropic's applicable age and account requirements for the Claude service you use. Consumer accounts require age 18 or the higher local minimum.
 
 ## Connect
