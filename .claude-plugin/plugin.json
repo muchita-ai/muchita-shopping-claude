@@ -8,6 +8,7 @@
     "url": "https://shopping.muchita.ai"
   },
   "homepage": "https://shopping.muchita.ai/claude/",
+  "privacyPolicyUrl": "https://shopping.muchita.ai/shopping/privacy",
   "repository": "https://github.com/muchita-ai/muchita-shopping-claude",
   "license": "MIT",
   "keywords": [
